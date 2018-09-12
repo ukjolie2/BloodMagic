@@ -617,9 +617,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 3883db83-22e0-4004-9e71-11a4eec35b11
+  cloudProjectId: fcb2d5ec-a368-433d-8345-09de65e80667
   projectName: BloodMagic
-  organizationId: hinghing15
+  organizationId: ascihex42414d46
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
