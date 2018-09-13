@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    //this class spawns the attacks the player uses
+    CreateAttack attacks = new CreateAttack();
+
+    public static PlayerController instance;
+    public static PlayerController Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+    //stats
+    public int hp = 10;
+
+    //movement
     public float moveSpeed = 1.0f;
     public float rotationSpeed = 5.0f;
     public bool usingController = false;
@@ -11,12 +26,18 @@ public class PlayerController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        
+        instance = this;
 	}
 
     // Update is called once per frame
     void Update()
     {
+        //Death
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
+        }
+
         // Translate character
         var move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
         transform.position += move * moveSpeed * Time.deltaTime;
@@ -25,6 +46,11 @@ public class PlayerController : MonoBehaviour
         float angle = 0f;
         Quaternion rotation;
 
+        //Attack
+        if(Input.GetButtonDown("Fire1"))
+        {
+            attacks.AttackCloseRange();
+        }
         if (usingController)
         {
             // Rotate character using right joystick
