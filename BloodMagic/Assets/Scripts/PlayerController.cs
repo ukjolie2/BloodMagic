@@ -5,18 +5,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //this class spawns the attacks the player uses
-    CreateAttack attacks = new CreateAttack();
+    CreateAttack attacks;
+    HealthChange healthBar;
 
-    public static PlayerController instance;
-    public static PlayerController Instance
-    {
-        get
-        {
-            return instance;
-        }
-    }
     //stats
-    public int hp = 10;
+    public int hp = 100;
 
     //movement
     public float moveSpeed = 1.0f;
@@ -26,7 +19,8 @@ public class PlayerController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        instance = this;
+        attacks = gameObject.GetComponent<CreateAttack>();
+        healthBar = gameObject.GetComponent<HealthChange>();
 	}
 
     // Update is called once per frame

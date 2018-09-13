@@ -11,13 +11,13 @@ public abstract class SkillClass : MonoBehaviour
     public abstract void UseAbility();
 
     //Cost in order to use ability
-    public abstract int HpCost { get; set; }
+    public int HpCost;
 
     //Hp returned, dependent on whether the attack is close ranged or 
     //if the attack actually hits the enemy
-    public abstract int HpReturn { get; set; }
+    public int HpReturn;
 
     //How much damage the attack does to an enemy
-    public abstract int Power { get; set; }
+    public int Power;
 	
 }

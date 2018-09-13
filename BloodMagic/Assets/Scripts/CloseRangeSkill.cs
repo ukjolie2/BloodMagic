@@ -3,33 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CloseRangeSkill : SkillClass {
-    public Rigidbody2D shape;
 
-    public CloseRangeSkill()
+    private PlayerController player;
+    public void Start()
     {
-        HpCost = 5;
-        HpReturn = 3;
+        player = GameObject.Find("Player").GetComponent<PlayerController>();
+        HpCost = 10;
+        HpReturn = 8;
         Power = 5;
     }
 
-    public override int HpCost { get; set; }
-    public override int HpReturn { get; set; }
-    public override int Power { get; set; }
-
     public override void UseAbility()
     {
-        PlayerController.instance.hp -= HpCost;
+        player.hp -= HpCost;
     }
 
-    void OnCollisionStay(Collision collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        foreach (ContactPoint contact in collision.contacts)
+        if (other.CompareTag("Enemy"))
         {
-            if(contact.otherCollider.CompareTag("Enemy")) {
-                int enemyHp = contact.otherCollider.transform.parent.gameObject.GetComponent<EnemyController>().hp;
-                enemyHp -= Power;
-                PlayerController.instance.hp += HpReturn;
-            }
+            EnemyController enemyHp = other.gameObject.GetComponent<EnemyController>();
+            enemyHp.hp -= Power;
+            player.hp += HpReturn;
         }
         Destroy(gameObject);
     }

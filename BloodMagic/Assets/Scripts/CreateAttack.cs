@@ -5,16 +5,15 @@ using UnityEngine;
 //Holds all the attacks created so far
 //PlayerController calls upon this to spawn their attacks
 public class CreateAttack : MonoBehaviour {
-
-    public Transform spawnPoint; //spawnPoint is used in all attacks
-
-    public CloseRangeSkill closeRange;
+    
+    public Rigidbody2D closeRange;
 	
     public void AttackCloseRange()
     {
-        Rigidbody2D clone;
-        spawnPoint = PlayerController.instance.transform;
-        clone = Instantiate(closeRange.shape, spawnPoint.position, spawnPoint.rotation);
-        clone.velocity = spawnPoint.TransformDirection(Vector3.forward * 20);
+        var clone = Instantiate(closeRange, gameObject.transform.position, gameObject.transform.rotation);
+        clone.velocity = gameObject.transform.TransformDirection(Vector3.forward * 20);
+        CloseRangeSkill abilities = clone.GetComponent<CloseRangeSkill>();
+        abilities.Start();
+        abilities.UseAbility();
     }
 }

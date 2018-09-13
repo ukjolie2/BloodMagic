@@ -7,7 +7,6 @@ public class EnemyController : MonoBehaviour
     public Transform target;
     public float speed = 3f;
     public int hp = 10;
-
     void Update()
     {
         if (hp <= 0)
