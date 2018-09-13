@@ -8,6 +8,10 @@ public class PlayerController : MonoBehaviour
     CreateAttack attacks;
     HealthChange healthBar;
 
+    //temporary spawnHolder
+    public GameObject spawner;
+    EnemySpawn spawnPoint;
+
     //stats
     public int hp = 100;
 
@@ -21,11 +25,13 @@ public class PlayerController : MonoBehaviour
     {
         attacks = gameObject.GetComponent<CreateAttack>();
         healthBar = gameObject.GetComponent<HealthChange>();
+        spawnPoint = spawner.GetComponent<EnemySpawn>();
 	}
 
     // Update is called once per frame
     void Update()
     {
+
         //Death
         if (hp <= 0)
         {
@@ -61,5 +67,11 @@ public class PlayerController : MonoBehaviour
             rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         }
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+    }
+
+    private void LateUpdate()
+    {
+        //Spawn all the enemies 
+        spawnPoint.spawn();
     }
 }

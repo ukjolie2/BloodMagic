@@ -8,8 +8,8 @@ public class CloseRangeSkill : SkillClass {
     public void Start()
     {
         player = GameObject.Find("Player").GetComponent<PlayerController>();
-        HpCost = 10;
-        HpReturn = 8;
+        HpCost = 50;
+        HpReturn = 51;
         Power = 5;
     }
 
