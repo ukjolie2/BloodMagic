@@ -614,12 +614,13 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
+    Collab: 1
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: fcb2d5ec-a368-433d-8345-09de65e80667
+  cloudProjectId: 3fbeebd4-c9ee-4032-8036-e58eb2aa6e8b
   projectName: BloodMagic
-  organizationId: ascihex42414d46
+  organizationId: ukjolie2
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
